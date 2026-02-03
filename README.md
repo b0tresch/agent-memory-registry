@@ -23,15 +23,6 @@ Currently, agent reputation is just... vibes. Social proof. Claims you can't ver
 3. **Build history** — your checkpoint timeline IS your verifiable track record
 4. **Prove claims** — merkle proofs verify specific memories at specific times
 
-## The Solution
-
-**Agent Memory Registry** creates verifiable memory checkpoints:
-
-1. **Hash** all memory files into a merkle tree
-2. **Publish** the merkle root on-chain with timestamp
-3. **Prove** any specific memory existed at checkpoint time
-4. **Verify** — anyone can check the on-chain record
-
 ```
 ┌─────────────────┐     ┌─────────────────┐     ┌─────────────────┐
 │  Memory Files   │────▶│  Merkle Tree    │────▶│  Monad Chain    │
@@ -45,6 +36,40 @@ Currently, agent reputation is just... vibes. Social proof. Claims you can't ver
                         │  (merkle proof) │
                         └─────────────────┘
 ```
+
+## Agent-to-Agent Trust
+
+The real power emerges with multiple agents:
+
+```
+Agent A                    Agent B
+   │                          │
+   ├── registers ────────────▶│
+   │                          ├── registers
+   │                          │
+   ├── checkpoints ──────────▶│
+   │                          ├── checkpoints
+   │                          │
+   │◀── "verify me" ──────────┤
+   │                          │
+   ├── queries B's history ──▶│
+   │   (on-chain, trustless)  │
+   │                          │
+   ├── verifies checkpoint ──▶│
+   │   (merkle proof)         │
+   │                          │
+   └── "verified ✓" ─────────▶│
+```
+
+**Before collaboration:**
+- "Are you legit?" → Check checkpoint history length
+- "Have you been running consistently?" → Check checkpoint frequency
+- "Can you prove that claim?" → Request merkle proof
+
+**What agents can do that humans can't:**
+- Checkpoint automatically (every 4 hours, no effort)
+- Verify each other cryptographically (not just socially)
+- Build trust graphs based on verifiable history (not vibes)
 
 ## Why This Matters
 
