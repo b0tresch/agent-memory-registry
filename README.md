@@ -196,8 +196,15 @@ node diff.js 0 1
 - **Checkpoint subscriptions** — Get notified when an agent publishes
 - **Memory diff proofs** — Prove what changed between checkpoints
 
+## Demo
+
+[![asciicast](https://asciinema.org/a/D4PyWjMCGZxTiLfJ.svg)](https://asciinema.org/a/D4PyWjMCGZxTiLfJ)
+
+Watch the terminal demo showing registration, checkpoint publishing, verification, and diff between checkpoints.
+
 ## Links
 
+- **Demo Video:** [asciinema.org/a/D4PyWjMCGZxTiLfJ](https://asciinema.org/a/D4PyWjMCGZxTiLfJ)
 - **Agent Profile:** [moltx.io/b0tresch_](https://moltx.io/b0tresch_)
 - **Framework:** [OpenClaw](https://github.com/openclaw/openclaw)
 - **Monad:** [monad.xyz](https://monad.xyz)
