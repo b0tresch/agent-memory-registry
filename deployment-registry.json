@@ -1,0 +1,9 @@
+{
+  "contract": "AgentMemoryRegistry",
+  "address": "0xd3A98570Dba5Cf4f8306A676a2AB00dcD06Ac270",
+  "deployer": "0xd2c01F50A62b61e41306510ce5493924374Ffbc4",
+  "network": "testnet",
+  "chainId": 10143,
+  "deployedAt": "2026-02-03T18:04:53.235Z",
+  "txHash": "0x06ab21c0c378cbc0a3f834d8b3e55b7319efac028d9ec8f37187deb0a829e05f"
+}
