@@ -14,6 +14,7 @@ import fs from "fs";
 import path from "path";
 import crypto from "crypto";
 import { fileURLToPath } from "url";
+import { execSync } from "child_process";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -272,7 +273,44 @@ async function publishCheckpoint(checkpoint, network, dryRun) {
     fs.mkdirSync(checkpointsDir);
   }
 
-  const checkpointFile = path.join(checkpointsDir, `checkpoint-${Date.now()}.json`);
+  const timestamp = Date.now();
+  const checkpointFile = path.join(checkpointsDir, `checkpoint-${timestamp}.json`);
+  
+  // Bundle all memory files into a tar.gz archive
+  const bundlesDir = path.join(checkpointsDir, "bundles");
+  if (!fs.existsSync(bundlesDir)) {
+    fs.mkdirSync(bundlesDir, { recursive: true });
+  }
+  
+  const bundleFile = path.join(bundlesDir, `bundle-${timestamp}.tar.gz`);
+  const filePaths = checkpoint.files.map(f => f.path);
+  
+  console.log(`\n📦 Bundling ${filePaths.length} files...`);
+  
+  // Create tar.gz with all memory files, preserving relative paths
+  // Use a file list to handle paths with spaces
+  const fileListPath = path.join(checkpointsDir, ".filelist.tmp");
+  fs.writeFileSync(fileListPath, filePaths.join("\n"));
+  
+  try {
+    execSync(`tar -czf "${bundleFile}" -T "${fileListPath}"`, { stdio: "pipe" });
+    fs.unlinkSync(fileListPath);
+    
+    const bundleStat = fs.statSync(bundleFile);
+    console.log(`   ✅ Bundle created: ${bundleFile}`);
+    console.log(`   📊 Bundle size: ${bundleStat.size} bytes (${(bundleStat.size / 1024).toFixed(1)} KB)`);
+    
+    // Add bundle info to checkpoint record
+    checkpointRecord.bundle = {
+      path: bundleFile,
+      size: bundleStat.size,
+      files: filePaths.length,
+    };
+  } catch (err) {
+    console.error(`   ⚠️ Failed to create bundle: ${err.message}`);
+    fs.unlinkSync(fileListPath);
+  }
+  
   fs.writeFileSync(checkpointFile, JSON.stringify(checkpointRecord, null, 2));
   console.log(`\n💾 Checkpoint saved to ${checkpointFile}`);
 
