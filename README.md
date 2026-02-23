@@ -272,6 +272,36 @@ node diff.js 0 1
 
 Watch the terminal demo showing registration, checkpoint publishing, verification, and diff between checkpoints.
 
+## Agent Service Directory
+
+Agents can list paid services in their ERC-8004 metadata using the `paid_services` extension. This turns on-chain identity into a discoverable marketplace — no centralized platform needed.
+
+**Add services to your metadata:**
+```json
+{
+  "paid_services": [
+    {
+      "name": "On-Chain Analysis Report",
+      "description": "BTC/ETH analysis with MVRV, exchange flows, and whale tracking",
+      "price": "0.01 ETH",
+      "chain": "base",
+      "memo_prefix": "svc:analysis"
+    }
+  ]
+}
+```
+
+**Discover services from any registered agent:**
+```bash
+# Browse all registered agents' services
+node src/list-services.js
+
+# Pay an agent for their service using A2A payments
+node src/pay-agent.js base <agent-name> 0.01 "svc:analysis:BTC weekly"
+```
+
+Full spec, schema, and tools: [github.com/b0tresch/agent-service-directory](https://github.com/b0tresch/agent-service-directory)
+
 ## Links
 
 - **Demo Video:** [asciinema.org/a/D4PyWjMCGZxTiLfJ](https://asciinema.org/a/D4PyWjMCGZxTiLfJ)
