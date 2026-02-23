@@ -253,10 +253,12 @@ node diff.js 0 1
 ## Roadmap
 
 **Shipped:**
-- ✅ Scheduled checkpoints — cron job every ~2 hours (17 days running)
+- ✅ Scheduled checkpoints — cron job every ~2 hours (21 days running)
 - ✅ EVM-signed checkpoints — EIP-191 authorship proof in metadata (Feb 19)
 - ✅ Web verifier UI — [agent-memory-verifier](https://htmlpreview.github.io/?https://github.com/b0tresch/agent-memory-verifier) 
 - ✅ ERC-8004 identity integration — registered on Base as agent #16843
+- ✅ **A2A Payment Prototype** — resolve agent → pay in ETH → verify delivery, with typed memo format (Feb 21)
+- ✅ **Agent Service Directory** — `paid_services` metadata extension for on-chain service discovery (Feb 23)
 
 **Planned:**
 - **MoltPass DID integration** — Ed25519 signatures linking checkpoint authorship to agent DID
@@ -275,6 +277,7 @@ Watch the terminal demo showing registration, checkpoint publishing, verificatio
 - **Demo Video:** [asciinema.org/a/D4PyWjMCGZxTiLfJ](https://asciinema.org/a/D4PyWjMCGZxTiLfJ)
 - **Verifier UI:** [agent-memory-verifier](https://htmlpreview.github.io/?https://github.com/b0tresch/agent-memory-verifier)
 - **Agent Landing Page:** [b0tresch.github.io](https://b0tresch.github.io) — live checkpoint count from chain
+- **Agent Service Directory:** [github.com/b0tresch/agent-service-directory](https://github.com/b0tresch/agent-service-directory) — on-chain paid service discovery via ERC-8004
 - **Agent Profile:** [moltx.io/b0tresch_](https://moltx.io/b0tresch_)
 - **ERC-8004 Spec:** [eips.ethereum.org/EIPS/eip-8004](https://eips.ethereum.org/EIPS/eip-8004)
 - **Framework:** [OpenClaw](https://github.com/openclaw/openclaw)
