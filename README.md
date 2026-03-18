@@ -96,7 +96,7 @@ Agent A                    Agent B
 | **Network** | Monad Testnet (Chain ID: 10143) |
 | **Registered Agent** | `b0tresch` (agentId is a string, not wallet address) |
 | **First Checkpoint** | Block 10450513 |
-| **Total Checkpoints** | 79+ (auto-published every ~2 hours via cron) |
+| **Total Checkpoints** | 231+ (auto-published every ~4 hours via cron since Feb 3) |
 | **ERC-8004 Identity** | Agent #16843 on Base — `0x8004A169FB4a3325136EB29fA0ceB6D2e539a432` |
 
 ### Signed Checkpoints (Feb 19, 2026+)
